@@ -4,7 +4,7 @@ import login from '../../assets/login/login.png'
 import { AuthContext } from '../../Context/Authprovider/Authprovider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, signInGoogle } = useContext(AuthContext);
 
     const handleRegister = event => {
         event.preventDefault();
@@ -19,6 +19,16 @@ const Register = () => {
         }) 
         .catch(error => console.error(error))
 
+    }
+
+    const handleGoogleSignIn = () => {
+        signInGoogle()
+        .then(result => {
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error => console.error(error))
+        
     }
 
     return (
@@ -52,6 +62,7 @@ const Register = () => {
                         <input type="submit" className="btn btn-primary" value="Register" />
                     </div>
                 </form>
+                <button onClick={handleGoogleSignIn} className="btn btn-outline btn-warning mx-8">Sign In With Google</button>
                 <p className='text-center'>Alredy Have an acount Please <Link className='text-orange-600 font-bold' to='/login'>LogIn</Link> </p>
             </div>
         </div>

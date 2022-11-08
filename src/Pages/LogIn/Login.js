@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import login from '../../assets/login/login.png'
+import { AuthContext } from '../../Context/Authprovider/Authprovider';
 
 const Login = () => {
+    const { logIn , signInGoogle} = useContext(AuthContext);
+
     const handleLogin = event => {
         event.preventDefault()
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error));
     }
+
+    const handleGoogleLogIn = () => {
+        signInGoogle()
+        .then(result => {
+            const user = result.user
+            console.log(user)
+        })
+        .catch(error => console.error(error))
+        
+    }
+
     return (
         <div className="hero my-32">
             <div className="hero-content grid md:grid-cols-2 flex-col lg:flex-row">
@@ -34,6 +58,7 @@ const Login = () => {
                             <input type="submit" className="btn btn-primary" value="Login" />
                         </div>
                     </form>
+                    <button onClick={handleGoogleLogIn} className="btn btn-outline btn-warning mx-8">Log In With Google</button>
                     <p className='text-center'>New To Our Website Please <Link className='text-orange-600 font-bold' to='/register'>Register Now</Link> </p>
                 </div>
             </div>
