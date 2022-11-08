@@ -6,10 +6,11 @@ const Header = () => {
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/service'>Services</Link></li>
+        <li><Link to='/login'>Login</Link></li>
     </>
     
     return (
-        <div className="navbar bg-base-100 mb-12">
+        <div className="navbar bg-base-100 mb-8">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
