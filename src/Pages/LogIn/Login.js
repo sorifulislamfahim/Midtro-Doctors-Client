@@ -1,10 +1,14 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import login from '../../assets/login/login.png'
 import { AuthContext } from '../../Context/Authprovider/Authprovider';
 
 const Login = () => {
     const { logIn , signInGoogle} = useContext(AuthContext);
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = event => {
         event.preventDefault()
@@ -16,6 +20,7 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            navigate(from, {replace: true})
         })
         .catch(error => console.error(error));
     }
@@ -24,7 +29,8 @@ const Login = () => {
         signInGoogle()
         .then(result => {
             const user = result.user
-            console.log(user)
+            console.log(user);
+            navigate(from, {replace: true})
         })
         .catch(error => console.error(error))
         
@@ -49,7 +55,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input name='password' type="text" placeholder="password" className="input input-bordered" required/>
+                            <input name='password' type="password" placeholder="password" className="input input-bordered" required/>
                             <label className="label">
                                 <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>

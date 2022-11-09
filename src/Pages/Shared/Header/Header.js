@@ -16,12 +16,12 @@ const Header = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/service'>Services</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
+        <li><Link to='/orders'>Order</Link></li>
        
         <li>
             {
             user?.email ?
             <>
-                <Link to='/orders'>Order</Link>
                 <button onClick={handleLogOut}>Logout</button>
             </>
              : 
