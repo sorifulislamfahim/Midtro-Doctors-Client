@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ServicesCart = ({service}) => {
-    const {title, img, price, description} = service;
+    const {title, img, price, description, _id} = service;
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
             <figure><img src={img} alt="" /></figure>
@@ -12,7 +12,7 @@ const ServicesCart = ({service}) => {
                 <div className="card-actions text-lg">
                     {
                         description.length > 100 ?
-                        <p>{description.slice(0, 100) + '...'} <Link className='text-orange-600' to={`service/${service.service_id}`}>Read More</Link></p> :
+                        <p>{description.slice(0, 100) + '...'} <Link className='text-orange-600' to={`/checkout/${_id}`}>Read More</Link></p> :
                         <p>{description}</p>
                     }
                 </div>
