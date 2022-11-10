@@ -9,7 +9,7 @@ const Orders = () => {
     useTitle('Orders')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+        fetch(`https://meditro-server.vercel.app/orders?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
@@ -30,7 +30,7 @@ const Orders = () => {
     const handleDelete = id => {
         const proceed = window.confirm('Are You Sure Want to cencel this order')
         if(proceed){
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`https://meditro-server.vercel.app/orders/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -46,7 +46,7 @@ const Orders = () => {
     }
 
     const handleStatusUpdate = id => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`https://meditro-server.vercel.app/orders/${id}`, {
             method: 'PATCH', 
             headers: {
                 'content-type' : 'application/json'

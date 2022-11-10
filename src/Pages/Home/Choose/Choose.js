@@ -5,7 +5,7 @@ const Choose = () => {
     return (
         <div className='my-20'>
             <h1 className='text-center underline font-mono text-4xl hover:text-orange-600'>Why Choose Us</h1>
-            <div className='grid grid-cols-3 gap-10 my-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-10'>
                 <div className='text-center'>
                     <div className='bg-sky-400 p-5 w-44 mx-auto rounded items-center'>
                         <FaPhone className='text-9xl bg-white rounded-3xl p-5 hover:bg-sky-400 hover:text-white'/>

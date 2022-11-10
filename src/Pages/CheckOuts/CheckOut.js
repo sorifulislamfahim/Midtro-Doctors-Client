@@ -26,7 +26,7 @@ const CheckOut = () => {
             message,
         }
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://meditro-server.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -47,12 +47,12 @@ const CheckOut = () => {
     return (
         <div>
             <div className="card lg:card-side bg-base-100 my-10">
-                <figure className='w-1/2'><img src={img} alt="Album"  className='rounded-2xl'/></figure>
+                <figure className='w-1/2'><img src={img} alt="Album" className='rounded-2xl' /></figure>
                 <div className="card-body w-1/2">
                     <h3 className="text-5xl text-center card-title">{title}</h3>
                     <h2 className="text-xl">{description}</h2>
                     <h2 className='text-orange-500 text-2xl font-bold'>Charg: ${price}</h2>
-                    
+
                 </div>
             </div>
 
