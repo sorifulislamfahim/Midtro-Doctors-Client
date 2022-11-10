@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/Authprovider/Authprovider';
+import useTitle from '../../hooks/useTitle';
 import OrderRow from './OrderRow';
 
 const Orders = () => {
     const { user, logOut } = useContext(AuthContext);
     const [orders, setOrders] = useState()
-
+    useTitle('Orders')
 
     useEffect(() => {
         fetch(`http://localhost:5000/orders?email=${user?.email}`, {

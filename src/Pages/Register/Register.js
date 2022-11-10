@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import login from '../../assets/login/login.png'
 import { AuthContext } from '../../Context/Authprovider/Authprovider';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
     const { createUser, signInGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
+    useTitle('Register')
 
     const handleRegister = event => {
         event.preventDefault();
