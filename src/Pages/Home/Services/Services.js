@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ServicesCart from './ServicesCart';
 
 const Services = () => {
@@ -22,6 +23,9 @@ const Services = () => {
                         service={service}
                     ></ServicesCart>)
                 }
+            </div>
+            <div className="text-center">
+            <li><Link className='btn ' to='/service'>See More</Link></li>
             </div>
         </div>
     );
