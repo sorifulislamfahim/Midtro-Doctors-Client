@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import login from '../../assets/login/login.png'
 import { AuthContext } from '../../Context/Authprovider/Authprovider';
 
 const Register = () => {
     const { createUser, signInGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = event => {
         event.preventDefault();
@@ -16,8 +17,12 @@ const Register = () => {
         .then(result => {
             const user = result.user;
             console.log(user)
+            form.reset();
+            navigate('/')
+           
         }) 
         .catch(error => console.error(error))
+        return alert('User Register Successfully')
 
     }
 

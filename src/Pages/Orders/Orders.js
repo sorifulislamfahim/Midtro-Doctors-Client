@@ -3,14 +3,26 @@ import { AuthContext } from '../../Context/Authprovider/Authprovider';
 import OrderRow from './OrderRow';
 
 const Orders = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [orders, setOrders] = useState()
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user?.email}`)
-            .then(res => res.json())
-            .then(data => setOrders(data))
+        fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                if(res.status === 401 || res.status === 403){
+                    logOut();
+                }
+                return res.json()
+            })
+            .then(data => {
+                // console.log('recived', data)
+                setOrders(data)
+            })
     }, [user?.email])
 
     
@@ -57,6 +69,7 @@ const Orders = () => {
     return (
         <div className='my-12'>
             <div className="overflow-x-auto w-full">
+                <h2 className='text-2xl text-center font-thin my-7'>You Have a<span>{orders?.lenght}</span> Orders Now</h2>
                 <table className="table w-full">
                  
                     <thead>
