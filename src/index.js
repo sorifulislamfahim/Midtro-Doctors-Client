@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Authprovider from './Context/Authprovider/Authprovider';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Authprovider>
-    <App />
+      <ToastContainer position='top-center' />
+      <App />
     </Authprovider>
   </React.StrictMode>
 );

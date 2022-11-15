@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import login from '../../assets/login/login.png'
 import { AuthContext } from '../../Context/Authprovider/Authprovider';
 import useTitle from '../../hooks/useTitle';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const { createUser, signInGoogle } = useContext(AuthContext);
@@ -24,7 +25,7 @@ const Register = () => {
            
         }) 
         .catch(error => console.error(error))
-        return alert('User Register Successfully')
+        return toast.success('User Create successfully')
 
     }
 

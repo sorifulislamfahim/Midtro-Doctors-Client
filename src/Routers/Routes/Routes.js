@@ -3,7 +3,7 @@ import Main from "../../Layout/Main";
 import Blog from "../../Pages/Blog/Blog";
 import CheckOut from "../../Pages/CheckOuts/CheckOut";
 import Home from "../../Pages/Home/Home/Home";
-import Services from "../../Pages/Home/Services/Services";
+import AllService from "../../Pages/Home/Services/AllService";
 import Login from "../../Pages/LogIn/Login";
 import Orders from "../../Pages/Orders/Orders";
 import Register from "../../Pages/Register/Register";
@@ -41,7 +41,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/service', 
-                element: <Services></Services>
+                element: <AllService></AllService> , 
+                loader: () => fetch('https://meditro-server.vercel.app/services')
             }
         ]
     },

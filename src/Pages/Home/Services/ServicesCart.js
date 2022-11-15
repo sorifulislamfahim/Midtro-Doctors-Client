@@ -1,5 +1,6 @@
 import React from 'react';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import { Link } from 'react-router-dom';
 
 const ServicesCart = ({ service }) => {
@@ -7,8 +8,8 @@ const ServicesCart = ({ service }) => {
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
             <PhotoProvider>
-                <PhotoView src="/1.jpg">
-                    <img src={img} alt="" />
+                <PhotoView src={img}>
+                    <img src={img} alt="img" className='p-5 rounded-3xl'/>
                 </PhotoView>
             </PhotoProvider>
             <div className="card-body">
@@ -17,7 +18,7 @@ const ServicesCart = ({ service }) => {
                 <div className="card-actions text-lg">
                     {
                         description.length > 100 ?
-                            <p>{description.slice(0, 100) + '...'} <Link className='text-orange-600' to={`/checkout/${_id}`}>Read More</Link></p> :
+                            <p>{description.slice(0, 100) + '...'} <Link to={`/checkout/${_id}`}> <button className='btn rounded-sm mx-2'>view details</button></Link></p> :
                             <p>{description}</p>
                     }
                 </div>

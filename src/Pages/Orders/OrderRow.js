@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-const OrderRow = ({ order, handleDelete, handleStatusUpdate }) => {
-    const {_id,  serviceName, price, petaint, phone, service , status} = order;
+const OrderRow = ({ order, handleDelete }) => {
+    const { _id, serviceName, price, petaint, phone, service } = order;
     const [orderService, setOrderService] = useState();
 
     useEffect(() => {
@@ -11,7 +11,9 @@ const OrderRow = ({ order, handleDelete, handleStatusUpdate }) => {
     }, [service])
 
 
+
     return (
+
         <tr>
             <th>
                 <label>
@@ -39,12 +41,19 @@ const OrderRow = ({ order, handleDelete, handleStatusUpdate }) => {
                 <br />
                 <span className="badge badge-ghost badge-sm">${price}</span>
             </td>
-            <td>Purple</td>
-            <th>
-                <button
-                onClick={() => handleStatusUpdate(_id)}
-                className="btn btn-ghost btn-xs">{status ? status : 'Pending'}</button>
-            </th>
+            <td><label htmlFor="my-modal" className="btn">edit</label></td>
+            <td>
+                <input type="checkbox" id="my-modal" className="modal-toggle" />
+                <div className="modal">
+                    <div className="modal-box">
+                        <h3 className="font-bold text-lg">Congratulations Your update Succesfuly</h3>
+                        <p className="py-4">You've been selected for a chance to</p>
+                        <div className="modal-action">
+                            <label htmlFor="my-modal" className="btn">Ok</label>
+                        </div>
+                    </div>
+                </div>
+            </td>
         </tr>
     );
 };

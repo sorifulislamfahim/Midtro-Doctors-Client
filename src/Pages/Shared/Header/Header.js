@@ -15,16 +15,18 @@ const Header = () => {
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/blog'>Blog</Link></li>
-        <li><Link to='/orders'>Order</Link></li>
-       
         <li>
             {
             user?.email ?
             <>
+                <Link to='/orders'>My Review</Link>
                 <button onClick={handleLogOut}>Logout</button>
             </>
              : 
-            <Link to='/login'>Login</Link>
+            <>
+                <Link to='/login'>Login</Link>
+                <Link to='/register'>Register</Link>
+            </>
             }
         </li>
 
@@ -49,9 +51,6 @@ const Header = () => {
                 <ul className="menu menu-horizontal p-0 font-semibold">
                     {menuItems}
                 </ul>
-            </div>
-            <div className="navbar-end">
-                <button className="btn btn-outline btn-secondary">Make An Apoinment</button>
             </div>
         </div>
     );

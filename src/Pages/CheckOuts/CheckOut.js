@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/Authprovider/Authprovider';
 import useTitle from '../../hooks/useTitle';
+import { toast } from 'react-toastify';
 
 const CheckOut = () => {
     const { title, _id, price, description, img, } = useLoaderData();
     const { user } = useContext(AuthContext);
-    useTitle('CheckOut')
+    useTitle('Details Page')
 
     const handlePlaceOrder = event => {
         event.preventDefault();
@@ -37,7 +38,7 @@ const CheckOut = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert('Your Order SucccessFully')
+                    toast.success('Your Revew Saved successfully')
                     form.reset();
                 }
             })
@@ -56,8 +57,8 @@ const CheckOut = () => {
                 </div>
             </div>
 
-            <form onSubmit={handlePlaceOrder}>
-                <h2 className='text-2xl text-center'>Order Confirm Books</h2>
+            <form onSubmit={handlePlaceOrder} className="bg-orange-100 p-10 my-10">
+                <h2 className='text-2xl text-center'>Please Give Me Review</h2>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-5 my-5'>
                     <input name='firstName' type="text" placeholder="First Name" className="input w-full input-bordered rounded-md" required />
                     <input name='lastName' type="text" placeholder="Last Name" className="input w-full input-bordered rounded-md" required />
@@ -65,7 +66,7 @@ const CheckOut = () => {
                     <input name='email' type="text" defaultValue={user?.email} placeholder="Your Email" className="input w-full input-bordered rounded-md" required readOnly />
                 </div>
                 <textarea name='message' className="textarea textarea-bordered h-24 w-full rounded-md" placeholder="Your Massage" required></textarea>
-                <input className='btn rounded-md mb-8' type="submit" value="Confirm" />
+                <input className='btn rounded-md mb-8' type="submit" value="Add Review" />
             </form>
         </div>
     );
